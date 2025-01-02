@@ -2349,7 +2349,7 @@
             </relocation>
             <relocation>
               <pattern>software.amazon</pattern>
-              <shadedPattern>${shade.prefix}.software.amazon</shadedPattern>
+              <shadedPattern>${shade.prefix}.pinelabs.software.amazon</shadedPattern>
             </relocation>
           </relocations>
         </configuration>
