@@ -930,7 +930,7 @@ public class RealtimeSegmentDataManager extends SegmentDataManager {
   public Map<String, ConsumerPartitionState> getConsumerPartitionState() {
     String partitionGroupId = String.valueOf(_partitionGroupId);
     return Collections.singletonMap(partitionGroupId, new ConsumerPartitionState(partitionGroupId, getCurrentOffset(),
-        getLastConsumedTimestamp(), fetchLatestStreamOffset(5_000), _lastRowMetadata));
+        getLastConsumedTimestamp(), fetchLatestStreamOffset(180_000), _lastRowMetadata));
   }
 
   /**
@@ -1617,7 +1617,7 @@ public class RealtimeSegmentDataManager extends SegmentDataManager {
         _resourceTmpDir.mkdirs();
       }
       _state = State.INITIAL_CONSUMING;
-      _latestStreamOffsetAtStartupTime = fetchLatestStreamOffset(5000);
+      _latestStreamOffsetAtStartupTime = fetchLatestStreamOffset(180000);
       _consumeStartTime = now();
       setConsumeEndTime(segmentZKMetadata, _consumeStartTime);
       _segmentCommitterFactory =
@@ -1734,7 +1734,7 @@ public class RealtimeSegmentDataManager extends SegmentDataManager {
           //  a single partition
           //  Fix this before opening support for partitioning in Kinesis
           int numPartitionGroups = _partitionMetadataProvider.computePartitionGroupMetadata(_clientId, _streamConfig,
-              Collections.emptyList(), /*maxWaitTimeMs=*/5000).size();
+              Collections.emptyList(), /*maxWaitTimeMs=*/180000).size();
 
           if (numPartitionGroups != numPartitions) {
             _segmentLogger.info(

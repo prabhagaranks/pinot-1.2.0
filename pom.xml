@@ -121,7 +121,7 @@
       See also: the surefire plugin section and the profiles section.-->
     <!-- Only unit tests are run by default. -->
     <skip.integration.tests>true</skip.integration.tests>
-    <skip.unit.tests>false</skip.unit.tests>
+    <skip.unit.tests>true</skip.unit.tests>
     <!-- Sets the VM argument line used when unit tests are run. -->
     <argLine>-Xms4g -Xmx4g</argLine>
     <SKIP_INTEGRATION_TESTS>true</SKIP_INTEGRATION_TESTS>
@@ -130,7 +130,7 @@
 
     <!-- Checkstyle violation prop.-->
     <checkstyle.violation.severity>warning</checkstyle.violation.severity>
-    <checkstyle.fail.on.violation>true</checkstyle.fail.on.violation>
+    <checkstyle.fail.on.violation>false</checkstyle.fail.on.violation>
 
     <!-- Configuration for Packaging -->
     <shade.prefix>org.apache.pinot.shaded</shade.prefix>

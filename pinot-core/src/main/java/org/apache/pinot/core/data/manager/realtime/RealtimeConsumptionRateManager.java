@@ -204,7 +204,7 @@ public class RealtimeConsumptionRateManager {
     String clientId = streamConfig.getTopicName() + "-consumption.rate.manager";
     StreamConsumerFactory factory = StreamConsumerFactoryProvider.create(streamConfig);
     try (StreamMetadataProvider streamMetadataProvider = factory.createStreamMetadataProvider(clientId)) {
-      return streamMetadataProvider.fetchPartitionCount(/*maxWaitTimeMs*/10_000);
+      return streamMetadataProvider.fetchPartitionCount(/*maxWaitTimeMs*/180_000);
     } catch (Exception e) {
       LOGGER.warn("Error fetching metadata for topic {}", streamConfig.getTopicName(), e);
       return null;
